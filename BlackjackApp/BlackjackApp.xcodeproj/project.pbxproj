@@ -12,16 +12,22 @@
 		61D4827820A82F37009CCD74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61D4827620A82F37009CCD74 /* Main.storyboard */; };
 		61D4827A20A82F37009CCD74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61D4827920A82F37009CCD74 /* Assets.xcassets */; };
 		61D4827D20A82F37009CCD74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61D4827B20A82F37009CCD74 /* LaunchScreen.storyboard */; };
+		61D4828920A832A8009CCD74 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D4828820A832A8009CCD74 /* CardModel.swift */; };
+		61D4828B20A84DE0009CCD74 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D4828A20A84DE0009CCD74 /* CardView.swift */; };
+		61D4829520A86A25009CCD74 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61D4829420A86A25009CCD74 /* CardView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		61D4826F20A82F37009CCD74 /* BlackjackApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlackjackApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		61D4827220A82F37009CCD74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		61D4827420A82F37009CCD74 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		61D4827220A82F37009CCD74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
+		61D4827420A82F37009CCD74 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
 		61D4827720A82F37009CCD74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		61D4827920A82F37009CCD74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		61D4827920A82F37009CCD74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		61D4827C20A82F37009CCD74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		61D4827E20A82F37009CCD74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61D4827E20A82F37009CCD74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
+		61D4828820A832A8009CCD74 /* CardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
+		61D4828A20A84DE0009CCD74 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		61D4829420A86A25009CCD74 /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +60,50 @@
 		61D4827120A82F37009CCD74 /* BlackjackApp */ = {
 			isa = PBXGroup;
 			children = (
-				61D4827220A82F37009CCD74 /* AppDelegate.swift */,
+				61D4828720A82F95009CCD74 /* SupportFiles */,
+				61D4828620A82F76009CCD74 /* Views */,
+				61D4828520A82F6E009CCD74 /* Models */,
+				61D4828420A82F65009CCD74 /* Controllers */,
+			);
+			path = BlackjackApp;
+			sourceTree = "<group>";
+		};
+		61D4828420A82F65009CCD74 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
 				61D4827420A82F37009CCD74 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		61D4828520A82F6E009CCD74 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				61D4828820A832A8009CCD74 /* CardModel.swift */,
+			);
+			name = Models;
+			path = BlackjackApp/Models;
+			sourceTree = SOURCE_ROOT;
+		};
+		61D4828620A82F76009CCD74 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				61D4828A20A84DE0009CCD74 /* CardView.swift */,
+				61D4829420A86A25009CCD74 /* CardView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		61D4828720A82F95009CCD74 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				61D4827220A82F37009CCD74 /* AppDelegate.swift */,
 				61D4827620A82F37009CCD74 /* Main.storyboard */,
 				61D4827920A82F37009CCD74 /* Assets.xcassets */,
 				61D4827B20A82F37009CCD74 /* LaunchScreen.storyboard */,
 				61D4827E20A82F37009CCD74 /* Info.plist */,
 			);
-			path = BlackjackApp;
+			path = SupportFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +166,7 @@
 			files = (
 				61D4827D20A82F37009CCD74 /* LaunchScreen.storyboard in Resources */,
 				61D4827A20A82F37009CCD74 /* Assets.xcassets in Resources */,
+				61D4829520A86A25009CCD74 /* CardView.xib in Resources */,
 				61D4827820A82F37009CCD74 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,6 +179,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				61D4827520A82F37009CCD74 /* ViewController.swift in Sources */,
+				61D4828920A832A8009CCD74 /* CardModel.swift in Sources */,
+				61D4828B20A84DE0009CCD74 /* CardView.swift in Sources */,
 				61D4827320A82F37009CCD74 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +194,7 @@
 				61D4827720A82F37009CCD74 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		61D4827B20A82F37009CCD74 /* LaunchScreen.storyboard */ = {
@@ -157,6 +203,7 @@
 				61D4827C20A82F37009CCD74 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
