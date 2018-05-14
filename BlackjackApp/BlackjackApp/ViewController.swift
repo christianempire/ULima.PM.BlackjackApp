@@ -18,16 +18,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var PlayerCard2: CardView!
     @IBOutlet weak var PlayerCard3: CardView!
     @IBOutlet weak var PlayerCard4: CardView!
+    @IBOutlet weak var StatusLabel: UILabel!
     
     // Game flags...
-    private var _gameIsOver: Bool = true;
-    private var _isPlayerTurn: Bool = true;
+    private var _gameIsOver: Bool = false;
+    private var _itsPlayersTurn: Bool = true;
+    private var _playerChoseToStand: Bool = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        PlayerCard1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "TapOnPlayerCard1:"));
-        PlayerCard2.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "TapOnPlayerCard2:"));
         PlayerCard3.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "TapOnPlayerCard3:"));
         PlayerCard4.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "TapOnPlayerCard4:"));
         
@@ -42,6 +42,8 @@ class ViewController: UIViewController {
     // Initializes game
     func Blackjack() {
         _gameIsOver = false;
+        _itsPlayersTurn = true;
+        _playerChoseToStand = false;
         
         let deck = Deck();
         
@@ -61,21 +63,25 @@ class ViewController: UIViewController {
         PlayerCard3.HideCard();
         PlayerCard4.CardObject = deck.DrawCard();
         PlayerCard4.HideCard();
+        
+        StatusLabel.text = "Blackjack";
+        
+        ProcessPlay();
     }
     
     // Analyzes the state of the game and makes the house play or ends the game
     func ProcessPlay() {
-        var houseTotal = GetHouseTotal();
-        var playerTotal = GetPlayerTotal();
+        let houseTotal = GetHouseTotal();
+        let playerTotal = GetPlayerTotal();
         
         // 1. Check for Blackjack
         if houseTotal == 21 {
             _gameIsOver = true
             
             if playerTotal == 21 {
-                // Print tie
+                StatusLabel.text = "Tie";
             } else {
-                // Print house wins
+                StatusLabel.text = "House wins";
             }
             
             return;
@@ -83,16 +89,88 @@ class ViewController: UIViewController {
             _gameIsOver = true
             
             if houseTotal == 21 {
-                // Print tie
+                StatusLabel.text = "Tie";
             } else {
-                // Print player wins
+                StatusLabel.text = "Player wins";
             }
             
             return;
         }
         
         // 2. Check for busting
+        if houseTotal > 21 {
+            StatusLabel.text = "Player wins";
+            
+            _gameIsOver = true;
+            
+            return;
+        } else if playerTotal > 21 {
+            StatusLabel.text = "House wins";
+            
+            _gameIsOver = true;
+            
+            return;
+        }
         
+        // 3. Check for plays left
+        if _itsPlayersTurn {
+            if _playerChoseToStand {
+                if !PlayerCard3.CardIsRevealed {
+                    // Player plays card 3
+                    PlayerCard3.RevealCard();
+                    
+                    _itsPlayersTurn = false;
+                    
+                    ProcessPlay();
+                    
+                    return;
+                } else if !PlayerCard4.CardIsRevealed {
+                    // Player plays card 4
+                    PlayerCard4.RevealCard();
+                    
+                    _itsPlayersTurn = false;
+                    
+                    ProcessPlay();
+                    
+                    return;
+                }
+            } else if !PlayerCard3.CardIsRevealed || !PlayerCard4.CardIsRevealed {
+                return;
+            }
+        } else {
+            if !HouseCard3.CardIsRevealed {
+                // House plays card 3
+                HouseCard3.RevealCard();
+                
+                _itsPlayersTurn = true;
+                
+                ProcessPlay();
+                
+                return;
+            } else if !HouseCard4.CardIsRevealed {
+                // House plays card 4
+                HouseCard4.RevealCard();
+                
+                _itsPlayersTurn = true;
+                
+                ProcessPlay();
+                
+                return;
+            }
+        }
+        
+        // 4. Declare winner whoever is closer to Blackjack
+        _gameIsOver = true;
+        
+        let difference = houseTotal - playerTotal;
+        
+        if difference > 0 {
+            StatusLabel.text = "House wins";
+        } else if difference == 0 {
+            StatusLabel.text = "Tie";
+        } else {
+            StatusLabel.text = "Player wins";
+        }
     }
     
     // Helpers...
@@ -175,35 +253,107 @@ class ViewController: UIViewController {
     }
     
     func GetOptimalAcesContribution(total: Int, _ numberOfAces: Int) -> Int {
-        // TODO
+        var possibleContributions = Array<Int>()
         
-        return 0;
+        if numberOfAces >= 1 && numberOfAces <= 4 {
+            if numberOfAces <= 1 {
+                possibleContributions.append(1);
+                possibleContributions.append(11);
+            }
+            
+            if numberOfAces <= 2 {
+                possibleContributions.append(2);
+                possibleContributions.append(12);
+            }
+            
+            if numberOfAces <= 3 {
+                possibleContributions.append(3);
+                possibleContributions.append(13);
+            }
+            
+            if numberOfAces <= 4 {
+                possibleContributions.append(4);
+                possibleContributions.append(14);
+            }
+            
+            let totalPossibilities = possibleContributions.count;
+            var index = 0;
+            var found = false;
+            var possibility = 0;
+            
+            // Find blackjack
+            while !found && (index < totalPossibilities) {
+                if total + possibleContributions[index] == 21 {
+                    possibility = possibleContributions[index];
+                    found = true;
+                } else {
+                    index++;
+                }
+            }
+            
+            // Find closest possibility lower than Blackjack
+            if !found {
+                var min = 21;
+                
+                for pC in possibleContributions {
+                    let newTotal = total + pC;
+                    
+                    if (newTotal < 21) && (21 - newTotal < min) {
+                        min = 21 - newTotal;
+                        possibility = pC;
+                        found = true;
+                    }
+                }
+            }
+            
+            // Find closest possibility higher than Blackjack
+            if !found {
+                var max = 0;
+                
+                for pC in possibleContributions {
+                    let newTotal = total + pC;
+                    
+                    if (newTotal > 21) && (newTotal - 21 < max) {
+                        max = newTotal - 21;
+                        possibility = pC;
+                    }
+                }
+            }
+            
+            return possibility;
+            
+        } else {
+            return 0;
+        }
     }
     
     // Game actions...
-    func TapOnPlayerCard1(sender: UITapGestureRecognizer) {
-        // Nothing
-    }
-    
-    func TapOnPlayerCard2(sender: UITapGestureRecognizer) {
-        // Nothing
-    }
-    
     func TapOnPlayerCard3(sender: UITapGestureRecognizer) {
-        if _gameIsOver {
-            return;
+        if !_gameIsOver && _itsPlayersTurn && !PlayerCard3.CardIsRevealed {
+            PlayerCard3.RevealCard();
+            
+            _itsPlayersTurn = false;
+            
+            ProcessPlay();
         }
     }
     
     func TapOnPlayerCard4(sender: UITapGestureRecognizer) {
-        if _gameIsOver {
-            return;
+        if !_gameIsOver && _itsPlayersTurn && !PlayerCard4.CardIsRevealed {
+            PlayerCard4.RevealCard();
+            
+            _itsPlayersTurn = false;
+            
+            ProcessPlay();
         }
     }
     
     @IBAction func TapOnStandButton(sender: UIButton) {
-        if _gameIsOver {
-            return;
+        if !_gameIsOver && _itsPlayersTurn && !_playerChoseToStand {
+            _playerChoseToStand = true;
+            _itsPlayersTurn = false;
+            
+            ProcessPlay();
         }
     }
     

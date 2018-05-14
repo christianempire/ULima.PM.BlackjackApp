@@ -52,7 +52,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="20" y="500" width="170" height="35"/>
+                                    <rect key="frame" x="20" y="527" width="170" height="35"/>
                                 </variation>
                                 <connections>
                                     <action selector="TapOnStandButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h94-7i-l4Q"/>
@@ -66,7 +66,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="210" y="500" width="170" height="35"/>
+                                    <rect key="frame" x="210" y="527" width="170" height="35"/>
                                 </variation>
                                 <connections>
                                     <action selector="TapOnResetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d1h-Fm-95E"/>
@@ -77,6 +77,13 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="20" y="115" width="81" height="125"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VuA-P1-PQ7" customClass="CardView" customModule="BlackjackApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="113" y="115" width="81" height="125"/>
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PSv-0h-hic" customClass="CardView" customModule="BlackjackApp" customModuleProvider="target">
@@ -121,13 +128,15 @@
                                     <rect key="frame" x="299" y="329" width="81" height="125"/>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VuA-P1-PQ7" customClass="CardView" customModule="BlackjackApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Li-I3-XFz">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="113" y="115" width="81" height="125"/>
+                                    <rect key="frame" x="20" y="494" width="360" height="25"/>
                                 </variation>
-                            </view>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -138,13 +147,14 @@
                                 <exclude reference="mhb-K5-b9j"/>
                                 <exclude reference="HOV-O9-rnB"/>
                                 <exclude reference="CTg-na-Zqu"/>
+                                <exclude reference="VuA-P1-PQ7"/>
                                 <exclude reference="PSv-0h-hic"/>
                                 <exclude reference="HRy-rF-yhT"/>
                                 <exclude reference="ANE-zW-N3Y"/>
                                 <exclude reference="lgY-e2-zQW"/>
                                 <exclude reference="nvG-ad-Nbu"/>
                                 <exclude reference="mgD-sr-7xo"/>
-                                <exclude reference="VuA-P1-PQ7"/>
+                                <exclude reference="3Li-I3-XFz"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -155,13 +165,14 @@
                                 <include reference="mhb-K5-b9j"/>
                                 <include reference="HOV-O9-rnB"/>
                                 <include reference="CTg-na-Zqu"/>
+                                <include reference="VuA-P1-PQ7"/>
                                 <include reference="PSv-0h-hic"/>
                                 <include reference="HRy-rF-yhT"/>
                                 <include reference="ANE-zW-N3Y"/>
                                 <include reference="lgY-e2-zQW"/>
                                 <include reference="nvG-ad-Nbu"/>
                                 <include reference="mgD-sr-7xo"/>
-                                <include reference="VuA-P1-PQ7"/>
+                                <include reference="3Li-I3-XFz"/>
                             </mask>
                         </variation>
                     </view>
@@ -174,6 +185,7 @@
                         <outlet property="PlayerCard2" destination="lgY-e2-zQW" id="Jeb-iG-QOW"/>
                         <outlet property="PlayerCard3" destination="nvG-ad-Nbu" id="yI9-FA-Zjs"/>
                         <outlet property="PlayerCard4" destination="mgD-sr-7xo" id="IK8-8o-fO0"/>
+                        <outlet property="StatusLabel" destination="3Li-I3-XFz" id="pBw-AS-Zqn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

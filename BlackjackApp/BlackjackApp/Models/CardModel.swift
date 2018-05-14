@@ -37,9 +37,9 @@ class Deck {
         _cards.append(Card(isAce: false, value: "8♠️", weight: 8));
         _cards.append(Card(isAce: false, value: "9♠️", weight: 9));
         _cards.append(Card(isAce: false, value: "10♠️", weight: 10));
-        _cards.append(Card(isAce: false, value: "J♠️", weight: 11));
-        _cards.append(Card(isAce: false, value: "Q♠️", weight: 12));
-        _cards.append(Card(isAce: false, value: "K♠️", weight: 13));
+        _cards.append(Card(isAce: false, value: "J♠️", weight: 10));
+        _cards.append(Card(isAce: false, value: "Q♠️", weight: 10));
+        _cards.append(Card(isAce: false, value: "K♠️", weight: 10));
         // Diamonds
         _cards.append(Card(isAce: true, value: "A♦️", weight: 1));
         _cards.append(Card(isAce: false, value: "2♦️", weight: 2));
@@ -51,9 +51,9 @@ class Deck {
         _cards.append(Card(isAce: false, value: "8♦️", weight: 8));
         _cards.append(Card(isAce: false, value: "9♦️", weight: 9));
         _cards.append(Card(isAce: false, value: "10♦️", weight: 10));
-        _cards.append(Card(isAce: false, value: "J♦️", weight: 11));
-        _cards.append(Card(isAce: false, value: "Q♦️", weight: 12));
-        _cards.append(Card(isAce: false, value: "K♦️", weight: 13));
+        _cards.append(Card(isAce: false, value: "J♦️", weight: 10));
+        _cards.append(Card(isAce: false, value: "Q♦️", weight: 10));
+        _cards.append(Card(isAce: false, value: "K♦️", weight: 10));
         // Clubs
         _cards.append(Card(isAce: true, value: "A♣️", weight: 1));
         _cards.append(Card(isAce: false, value: "2♣️", weight: 2));
@@ -65,9 +65,9 @@ class Deck {
         _cards.append(Card(isAce: false, value: "8♣️", weight: 8));
         _cards.append(Card(isAce: false, value: "9♣️", weight: 9));
         _cards.append(Card(isAce: false, value: "10♣️", weight: 10));
-        _cards.append(Card(isAce: false, value: "J♣️", weight: 11));
-        _cards.append(Card(isAce: false, value: "Q♣️", weight: 12));
-        _cards.append(Card(isAce: false, value: "K♣️", weight: 13));
+        _cards.append(Card(isAce: false, value: "J♣️", weight: 10));
+        _cards.append(Card(isAce: false, value: "Q♣️", weight: 10));
+        _cards.append(Card(isAce: false, value: "K♣️", weight: 10));
         // Hearts
         _cards.append(Card(isAce: true, value: "A♥️", weight: 1));
         _cards.append(Card(isAce: false, value: "2♥️", weight: 2));
@@ -79,9 +79,9 @@ class Deck {
         _cards.append(Card(isAce: false, value: "8♥️", weight: 8));
         _cards.append(Card(isAce: false, value: "9♥️", weight: 9));
         _cards.append(Card(isAce: false, value: "10♥️", weight: 10));
-        _cards.append(Card(isAce: false, value: "J♥️", weight: 11));
-        _cards.append(Card(isAce: false, value: "Q♥️", weight: 12));
-        _cards.append(Card(isAce: false, value: "K♥️", weight: 13));
+        _cards.append(Card(isAce: false, value: "J♥️", weight: 10));
+        _cards.append(Card(isAce: false, value: "Q♥️", weight: 10));
+        _cards.append(Card(isAce: false, value: "K♥️", weight: 10));
     }
     
     // Draws a random card from the deck, this card is automatically removed from the deck
